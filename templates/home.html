@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+		<title>Hello, world!</title>
+	</head>
+	<body>
+		<!-- Navber start -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="/">Sandip Blog</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarNav"
+				aria-controls="navbarNav"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'create_blog' %}">Create A Blog</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<section id="main-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 m-auto">
+						<div class="card mt-3 mb-5">
+							<div class="card-header bg-secondary text-white">
+								<h4 class="card-title text-center">
+									Recent Posts
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    {% for blog in blogs %}
+                                    <li class="list-group-item page-link">
+                                        <a href="{% url 'blog' blog.id %}" style="text-decoration: none;">
+                                            <p class="lead">{{blog.title}}</p>
+                                            <p class="text-muted">{{blog.description}}</p>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+		<script src="{% static 'js/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+</html>

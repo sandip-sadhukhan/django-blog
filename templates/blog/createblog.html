@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
+		<title>Hello, world!</title>
+	</head>
+	<body>
+		<!-- Navber start -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="/">Sandip Blog</a>
+			<button
+				class="navbar-toggler"
+				type="button"
+				data-toggle="collapse"
+				data-target="#navbarNav"
+				aria-controls="navbarNav"
+				aria-expanded="false"
+				aria-label="Toggle navigation"
+			>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'create_blog' %}">Create A Blog</a>
+					</li>
+				</ul>
+			</div>
+        </nav>
+
+        <section id="createblog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 m-auto">
+                        <div class="card mt-3 mb-5">
+                            <div class="card-header bg-secondary text-white">
+                                <h5 class="card-title text-center">Create Blog</h5>
+                            </div>
+                            <div class="card-body">
+                                <form action="/create_blog/" method="post">
+                                    {% csrf_token %}
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Enter Blog Title..." name="title" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Enter Blog Title..." name="description" class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <textarea name="content" placeholder="Enter Content of blog.." class="form-control" cols="30" rows="10"></textarea>
+                                    </div>
+                                    <input type="submit" class="btn btn-success btn-block">
+                                </form>
+                            </div>
+                            <div class="card-footer text-center">
+                            <a href="/" class="btn btn-dark">Back To Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+		<script src="{% static 'js/popper.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	</body>
+</html>
